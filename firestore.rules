@@ -8,8 +8,8 @@ service cloud.firestore {
     function autorizado() {
       return request.auth != null
         && request.auth.token.email in [
-          'willy@example.com',  // ← reemplazar por el gmail de Willy
-          'yani@example.com'    // ← reemplazar por el gmail de Yani
+          'willy.esposito@gmail.com',  // Willy
+          'ya.riveiro19@gmail.com'     // Yani
         ];
     }
 

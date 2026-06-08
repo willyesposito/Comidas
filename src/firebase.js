@@ -18,6 +18,6 @@ export const googleProvider = new GoogleAuthProvider();
 // Cuentas de Google autorizadas a usar la app (Willy y Yani).
 // Debe coincidir con la lista en las reglas de Firestore (firestore.rules).
 export const ALLOWED_EMAILS = [
-  'willy@example.com',  // ← reemplazar por el gmail de Willy
-  'yani@example.com',   // ← reemplazar por el gmail de Yani
+  'willy.esposito@gmail.com',  // Willy
+  'ya.riveiro19@gmail.com',    // Yani
 ];
