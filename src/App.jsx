@@ -56,7 +56,10 @@ export default function App() {
     try {
       await signInWithPopup(auth, googleProvider);
     } catch (e) {
-      if (e.code !== 'auth/popup-closed-by-user') setAuthError('No se pudo iniciar sesión. Probá de nuevo.');
+      if (e.code !== 'auth/popup-closed-by-user') {
+        console.error('Error de login:', e.code, e.message);
+        setAuthError('No se pudo iniciar sesión. Probá de nuevo.');
+      }
     }
   };
 
