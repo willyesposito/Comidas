@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Solo las cuentas de Google de Willy y Yani pueden leer/escribir.
+    // Debe coincidir con ALLOWED_EMAILS en src/firebase.js.
+    function autorizado() {
+      return request.auth != null
+        && request.auth.token.email in [
+          'willy@example.com',  // ← reemplazar por el gmail de Willy
+          'yani@example.com'    // ← reemplazar por el gmail de Yani
+        ];
+    }
+
+    match /semanas/{doc} {
+      allow read, write: if autorizado();
+    }
+
+    // Todo lo demás queda bloqueado por defecto.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

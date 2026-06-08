@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const app = initializeApp({
   apiKey:            import.meta.env.VITE_FIREBASE_API_KEY,
@@ -11,3 +12,12 @@ const app = initializeApp({
 });
 
 export const db = getFirestore(app);
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
+
+// Cuentas de Google autorizadas a usar la app (Willy y Yani).
+// Debe coincidir con la lista en las reglas de Firestore (firestore.rules).
+export const ALLOWED_EMAILS = [
+  'willy@example.com',  // ← reemplazar por el gmail de Willy
+  'yani@example.com',   // ← reemplazar por el gmail de Yani
+];

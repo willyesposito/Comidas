@@ -4,7 +4,7 @@ import { getName } from '../data/comidas';
 import Btn from '../components/Btn';
 
 // ─── HISTORIAL VIEW ───────────────────────────────────────────────────────────
-export default function HistorialView({ historial }) {
+export default function HistorialView({ historial, userEmail, onLogout }) {
   const [open, setOpen] = useState(null);
   return (
     <div style={{ paddingBottom:90 }}>
@@ -45,6 +45,15 @@ export default function HistorialView({ historial }) {
           <div style={{ textAlign:'center', padding:'70px 0', color:C.muted }}>
             <div style={{ fontSize:52 }}>📋</div>
             <div style={{ marginTop:10, fontSize:15 }}>Todavía no guardaste ninguna semana</div>
+          </div>
+        )}
+
+        {onLogout && (
+          <div style={{ marginTop:18, paddingTop:18, borderTop:`1px solid ${C.border}`, textAlign:'center' }}>
+            {userEmail && <div style={{ fontSize:12, color:C.muted, marginBottom:10 }}>{userEmail}</div>}
+            <Btn onClick={onLogout} style={{ fontSize:14, color:C.muted, fontWeight:700, padding:'8px 16px' }}>
+              Cerrar sesión
+            </Btn>
           </div>
         )}
       </div>
